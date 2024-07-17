@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Cliente } from '../modelo/Cliente';
 import { ClienteService } from '../servico/cliente.service';
 
+
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -20,6 +21,7 @@ tabela:boolean = true;
 // JSON de clientes
 
 clientes:Cliente[] = [];
+cidades: any;
 
 
 // Construtor
@@ -59,6 +61,9 @@ selecionarCliente(posicao:number):void{
     this.tabela = false;
 
 }
+
+
+
 
 // Método para editar clientes
 editar():void{

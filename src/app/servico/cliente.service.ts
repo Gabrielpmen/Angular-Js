@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable  } from 'rxjs';
 import { Cliente } from '../modelo/Cliente';
+import { Cidade } from '../modelo/Cidade';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +19,12 @@ export class ClienteService {
   selecionar():Observable<Cliente[]>{
     return this.http.get<Cliente[]>(this.url);
   }
+
+   // Método para selecionar todos os clientes
+   selecionar2():Observable<Cidade[]>{
+    return this.http.get<Cidade[]>(this.url);
+  }
+
 
   // Método para cadastrar clientes
 

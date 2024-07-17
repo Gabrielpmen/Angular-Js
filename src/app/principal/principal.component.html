@@ -33,3 +33,19 @@
 </tr>
   </tbody>
 </table>
+
+
+<table class="table" *ngIf ="tabela">
+  <thead>
+    <tr>
+      <th>#</th>
+         <th>Cidade</th>
+          </tr>
+  </thead>
+  <tbody>
+<tr *ngFor="let c of cidades; index as i">
+  <td>{{i+1}}</td>
+  <td>{{c.cidade}}</td>
+  </tr>
+  </tbody>
+</table>

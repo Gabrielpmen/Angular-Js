@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Cliente } from '../modelo/Cliente';
 import { ClienteService } from '../servico/cliente.service';
+import { Cidade } from '../modelo/Cidade';
+import { CidadeService } from '../servico/cidade.service';
 
 
 @Component({
@@ -9,11 +11,8 @@ import { ClienteService } from '../servico/cliente.service';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent {
-selecionarCliente(_t45: number) {
-throw new Error('Method not implemented.');
-}
-  // Objeto do tipo Cliente
-  cliente = new Cliente();
+  // Objeto do tipo Cidade
+  cidade = new Cidade();
 
   // Váriavel para visibiliade dos botões
 btnCadastro:boolean = true;
@@ -21,41 +20,38 @@ btnCadastro:boolean = true;
 // Váriavel para visibilidade da tabela
 tabela:boolean = true;
 
-// JSON de clientes
+// JSON de cidade
 
-clientes:Cliente[] = [];
-cidades: any;
-
-
+cidades:Cidade[] = [];
 // Construtor
 
-constructor(private servico:ClienteService){}
+constructor(private servico:CidadeService){}
 // Método de seleção
 
-selecionar():void{
+selecionar2():void{
 this.servico.selecionar()
-.subscribe(retorno =>this.clientes = retorno);
+.subscribe(retorno =>this.cidades = retorno);
 }
 
 // Método de cadastro
-cadastrar():void{
-  this.servico.cadastrar(this.cliente)
+cadastrar2():void{
+  this.servico.cadastrar(this.cidade)
   .subscribe(retorno => {
     //Cadastrar o cliente no vetor
-    this.clientes.push(retorno);
+    this.cidades.push(retorno);
 
 // Limpar formulário
-this.cliente = new Cliente();
+this.cidade = new Cliente();
 // Mensagem
-alert('Cliente cadastrado com sucesso!')
+alert('Cidade cadastrada com sucesso!')
 
   });
 }
-// Método para selecionar um cliente especifico
-selecionarCliente(posicao:number):void{
+// Método para selecionar uma cidade especifica
+selecionarCidade(posicao:number):void{
 
-  // Selecionar cliente no vetor
-  this.cliente = this.clientes[posicao];
+  // Selecionar cidade no vetor
+  this.cidade = this.cidades[posicao];
 
   // Visibilidade dos botões
   this.btnCadastro =false;
@@ -65,21 +61,21 @@ selecionarCliente(posicao:number):void{
 
 }
 
-// Método para editar clientes
-editar():void{
-  this.servico.editar(this.cliente)
+// Método para editar cidades
+editar2():void{
+  this.servico.editar(this.cidade)
   .subscribe(retorno => {
 
-// Obter posição do vetor onde está o cliente
-let posicao = this.clientes.findIndex(obj =>{
+// Obter posição do vetor onde está a cidade
+let posicao = this.cidades.findIndex(obj =>{
   return obj.codigo== retorno.codigo;
 });
 
-// Alterar os dados do cliente no vetor
-this.clientes[posicao] = retorno;
+// Alterar os dados da cidade no vetor
+this.cidades[posicao] = retorno;
 
 //Limpar formulário
-this.cliente = new Cliente();
+this.cidade = new Cliente();
 
 // Visibilidade dos botões
 this.btnCadastro = true;
@@ -88,27 +84,27 @@ this.btnCadastro = true;
 this.tabela = true;
 
 // Mensagem
-alert('Cliente alterado com sucesso');
+alert('Cidade alterada com sucesso');
 
   });
 }
 
 
-// Método para remover clientes
-remover():void{
-  this.servico.remover(this.cliente.codigo)
+// Método para remover cidade
+remover2():void{
+  this.servico.remover(this.cidade.codigo)
   .subscribe(retorno => {
 
-// Obter posição do vetor onde está o cliente
-let posicao = this.clientes.findIndex(obj =>{
-  return obj.codigo== this.cliente.codigo;
+// Obter posição do vetor onde está a cidade
+let posicao = this.cidades.findIndex(obj =>{
+  return obj.codigo== this.cidade.codigo;
 });
 
 // Remover cliente no vetor
-this.clientes.splice(posicao, 1);
+this.cidades.splice(posicao, 1);
 
 //Limpar formulário
-this.cliente = new Cliente();
+this.cidade = new Cidade();
 
 // Visibilidade dos botões
 this.btnCadastro = true;
@@ -117,16 +113,16 @@ this.btnCadastro = true;
 this.tabela = true;
 
 // Mensagem
-alert('Cliente removido com sucesso');
+alert('Cidade removida com sucesso');
 
   });
 }
 
 // Método para cancelar
-cancelar():void{
+cancelar2():void{
 
 // Limpar formulário
-this.cliente = new Cliente();
+this.cidade = new Cidade();
 
 // Visibilidade dos botões
 this.btnCadastro = true;
@@ -139,6 +135,6 @@ this.tabela = true;
 
 // Método de inicialização
 ngOnInit(){
-  this.selecionar();
+  this.selecionar2();
 }
 }

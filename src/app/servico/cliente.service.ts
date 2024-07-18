@@ -20,12 +20,6 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.url);
   }
 
-   // Método para selecionar todos os clientes
-   selecionar2():Observable<Cidade[]>{
-    return this.http.get<Cidade[]>(this.url);
-  }
-
-
   // Método para cadastrar clientes
 
   cadastrar(obj:Cliente):Observable<Cliente>{

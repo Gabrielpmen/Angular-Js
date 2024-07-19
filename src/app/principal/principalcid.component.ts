@@ -10,7 +10,7 @@ import { CidadeService } from '../servico/cidade.service';
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
-export class PrincipalComponent {
+export class PrincipalCidComponent {
   // Objeto do tipo Cidade
   cidade = new Cidade();
 

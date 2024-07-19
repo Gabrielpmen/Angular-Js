@@ -9,9 +9,7 @@ import { ClienteService } from '../servico/cliente.service';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent {
-selecionarCliente(_t45: number) {
-throw new Error('Method not implemented.');
-}
+
   // Objeto do tipo Cliente
   cliente = new Cliente();
 

@@ -2,7 +2,7 @@ import { Cidade } from './../modelo/Cidade';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable  } from 'rxjs';
-import { Cliente } from '../modelo/Cliente';
+
 
 
 
@@ -21,11 +21,9 @@ export class CidadeService {
     return this.http.get<Cidade[]>(this.url);
   }
 
-
-
   // Método para cadastrar cidade
 
-  cadastrar2(obj:Cidade):Observable<Cidade>{
+  cadastrarcid(obj:Cidade):Observable<Cidade>{
     return this.http.post<Cidade>(this.url,obj);
   }
 

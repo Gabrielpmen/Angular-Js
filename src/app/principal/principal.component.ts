@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Cliente } from '../modelo/Cliente';
 import { ClienteService } from '../servico/cliente.service';
+import { CidadeService } from '../servico/cidade.service';
+import { Cidade } from '../modelo/Cidade';
 
 
 @Component({
@@ -12,6 +14,7 @@ export class PrincipalComponent {
 
   // Objeto do tipo Cliente
   cliente = new Cliente();
+  cidade = new Cidade();
 
   // Váriavel para visibiliade dos botões
 btnCadastro:boolean = true;
@@ -28,7 +31,7 @@ cidades: any;
 
 // Construtor
 
-constructor(private servico:ClienteService){}
+constructor(private servico:ClienteService, private servicocid:CidadeService){}
 // Método de seleção
 
 selecionar():void{
@@ -39,17 +42,27 @@ this.servico.selecionar()
 // Método de cadastro
 cadastrar():void{
   this.servico.cadastrar(this.cliente)
+
   .subscribe(retorno => {
     //Cadastrar o cliente no vetor
     this.clientes.push(retorno);
-
-// Limpar formulário
+     // Limpar formulário
 this.cliente = new Cliente();
 // Mensagem
 alert('Cliente cadastrado com sucesso!')
 
-  });
-}
+  })
+  this.servicocid.cadastrarcid(this.cidade)
+    .subscribe(retorno => {
+      //Cadastrar o cidade no vetor
+    this.cidades.push(retorno);
+    // Limpar formulário
+this.cidade = new Cidade();
+// Mensagem
+alert('Cidade cadastrada com sucesso!')})
+
+};
+
 // Método para selecionar um cliente especifico
 selecionarCliente(posicao:number):void{
 
@@ -63,6 +76,8 @@ selecionarCliente(posicao:number):void{
     this.tabela = false;
 
 }
+
+
 
 // Método para editar clientes
 editar():void{

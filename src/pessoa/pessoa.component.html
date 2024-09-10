@@ -1,0 +1,27 @@
+<!-- Formulário -->
+<form>
+    <input type="text" placeholder="Nome da pessoa" class="form-control" [(ngModel)]="pessoa.nome" name="nome">
+    
+    <select class="form-control" [(ngModel)]="indiceCidade" name="cidade">
+        <option *ngFor="let c of cidades; let indice = index" value="{{indice}}">{{c?.nome}}</option>
+    </select>
+
+    <input type="button" value="Cadastrar" class="btn btn-primary" (click)="cadastrar()">
+</form>
+
+<!-- Tabela -->
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let p of pessoas">
+            <td>{{p.nome}}</td>
+            <td>{{p.cidade?.nome}}</td>
+        </tr>
+    </tbody>
+</table>

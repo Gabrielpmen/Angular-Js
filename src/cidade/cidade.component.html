@@ -1,0 +1,21 @@
+<!-- Formulário -->
+<form>
+    <input type="text" placeholder="Nome da cidade" class="form-control" [(ngModel)]="cidade.nome" name="nome">
+
+    <input type="button" value="Cadastrar" class="btn btn-primary" (click)="cadastrar()">
+</form>
+
+<!-- Tabela -->
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>Cidades cadastradas</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let c of cidades">
+            <td>{{c.nome}}</td>
+        </tr>
+    </tbody>
+</table>

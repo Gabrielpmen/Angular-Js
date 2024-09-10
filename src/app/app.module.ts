@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule} from '@angular/common/http';
+
 import { AppComponent } from './app.component';
-import { PrincipalComponent } from './principal/principal.component';
+
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PessoaComponent } from 'src/pessoa/pessoa.component';
+import { CidadeComponent } from 'src/cidade/cidade.component';
+import { TopoComponent } from './topo/topo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrincipalComponent
+    PessoaComponent,
+    CidadeComponent,
+    TopoComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpClientModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
